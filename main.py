@@ -76,29 +76,26 @@ def search_product_list(interval_count = 1, interval_hours = 6):
                 # E-mail gönderim fonksiyonu
                 if price < prod_tracker.buy_below[x]:
                     print('************************ UYARI! STOK VAR '+prod_tracker.code[x]+' ************************')
-                    sender = 'contact@nemesispharma.com'
-                    receivers = ['umut@umutemre.com']
-                    msg = MIMEMultipart()
-                    message = "Ps5 Stok Var : "+url+""
-                    password = "umut4750787"
-                    msg['From'] = "infinitumcomtr@gmail.com"
-                    msg['To'] = "umut@umutemre.com"
-                    msg['Subject'] = "PS5 Stok "+code+""
+                gmail_user = 'confickerx@gmail.com'
+                gmail_app_password = 'tlkmunmwiptifwml'
+                sent_from = gmail_user
+                sent_to = ['umut@umutemre.com', 'umut@infinitum.com.tr']
+                msg = MIMEMultipart()
+                message = "Ps5 Stok Var : "+url+""
+                msg['From'] = gmail_user
+                msg['Subject'] = "PS5 Stok"
+                msg.attach(MIMEText(message, 'plain'))
+                server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+                server.ehlo()
+                server.login(gmail_user, gmail_app_password)
+                server.sendmail(sent_from, sent_to, msg.as_string())
+                server.close()
+                print('Stokta var! Mail gönderildi')
 
-                    msg.attach(MIMEText(message, 'plain'))
-
-                    server = smtplib.SMTP('smtp.gmail.com: 587')
-
-                    server.starttls()
-
-                    server.login(msg['From'], password)
-                    server.sendmail(msg['From'], msg['To'], msg.as_string())
-                    server.quit()
-                    print("Gönderildi")
-                    
             except:
                 pass
                 print("Hala Stok Yok...")
+
             tracker_log = tracker_log.append(log)
             print('Sorgulanan Ürün: '+ prod_tracker.code[x] +'\n' + title + '\n\n')            
             sleep(5)
