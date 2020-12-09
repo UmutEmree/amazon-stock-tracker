@@ -66,7 +66,7 @@ def search_product_list(interval_count = 1, interval_hours = 6):
                                 'code': prod_tracker.code[x], # excellde ki kod alanına koyduğunuz değer
                                 'url': url,
                                 'title': title,
-                                'fiyat': prod_tracker.fiyat[x], # fiyat için koyulan değer
+                                'price': prod_tracker.buy_below[x], # fiyat için koyulan değer
                                 'price': price,
                                 'stock': stock,
                                 'review_score': review_score,
@@ -74,7 +74,7 @@ def search_product_list(interval_count = 1, interval_hours = 6):
 
             try:
                 # E-mail gönderim fonksiyonu
-                if price < prod_tracker.fiyat[x]:
+                if price < prod_tracker.buy_below[x]:
                     print('************************ UYARI! STOK VAR '+prod_tracker.code[x]+' ************************')
                     sender = 'contact@nemesispharma.com'
                     receivers = ['umut@umutemre.com']
@@ -99,7 +99,6 @@ def search_product_list(interval_count = 1, interval_hours = 6):
             except:
                 pass
                 print("Hala Stok Yok...")
-                gi
             tracker_log = tracker_log.append(log)
             print('Sorgulanan Ürün: '+ prod_tracker.code[x] +'\n' + title + '\n\n')            
             sleep(5)
