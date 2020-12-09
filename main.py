@@ -79,7 +79,7 @@ def search_product_list(interval_count = 1, interval_hours = 6):
                 gmail_user = 'confickerx@gmail.com'
                 gmail_app_password = 'tlkmunmwiptifwml'
                 sent_from = gmail_user
-                sent_to = ['umut@umutemre.com', 'umut@infinitum.com.tr']
+                sent_to = ['umut@umutemre.com']
                 msg = MIMEMultipart()
                 message = "Ps5 Stok Var : "+url+""
                 msg['From'] = gmail_user
