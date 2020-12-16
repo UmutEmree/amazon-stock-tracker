@@ -29,7 +29,6 @@ def search_product_list(interval_count = 1, interval_hours = 6):
             soup = BeautifulSoup(page.content, features="lxml")
             
             #Ürün adı
-            title = soup.find(id='productTitle').get_text().strip()
             
             
             try:
@@ -65,7 +64,7 @@ def search_product_list(interval_count = 1, interval_hours = 6):
             log = pd.DataFrame({'date': now.replace('h',':').replace('m',''),
                                 'code': prod_tracker.code[x], # excellde ki kod alanına koyduğunuz değer
                                 'url': url,
-                                'title': title,
+                                'title': 'Ps5',
                                 'price': prod_tracker.buy_below[x], # fiyat için koyulan değer
                                 'price': price,
                                 'stock': stock,
@@ -97,7 +96,7 @@ def search_product_list(interval_count = 1, interval_hours = 6):
                 print("Hala Stok Yok...")
 
             tracker_log = tracker_log.append(log)
-            print('Sorgulanan Ürün: '+ prod_tracker.code[x] +'\n' + title + '\n\n')            
+            print('Sorgulanan Ürün: '+ prod_tracker.code[x] +'\n' + 'Ps5' + '\n\n')            
             sleep(5)
         
        
@@ -109,5 +108,5 @@ def search_product_list(interval_count = 1, interval_hours = 6):
     
     final_df.to_excel('/arananlar/arama_gecmisi_{}.xlsx'.format(now), index=False)
     print('Arama sona erdi.')
-
 search_product_list()
+sleep(60)
