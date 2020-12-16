@@ -75,8 +75,8 @@ def search_product_list(interval_count = 1, interval_hours = 6):
                 # E-mail gönderim fonksiyonu
                 if price < prod_tracker.buy_below[x]:
                     print('************************ UYARI! STOK VAR '+prod_tracker.code[x]+' ************************')
-                gmail_user = 'confickerx@gmail.com'
-                gmail_app_password = 'tlkmunmwiptifwml'
+                gmail_user = 'mailiniz@gmail.com'
+                gmail_app_password = 'gmail app şifre'
                 sent_from = gmail_user
                 sent_to = ['umut@umutemre.com', 'umut@infinitum.com.tr']
                 msg = MIMEMultipart()
